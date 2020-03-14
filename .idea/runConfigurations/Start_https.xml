@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Start https" type="NodeJSConfigurationType" path-to-js-file="https.js" working-dir="$PROJECT_DIR$/spec">
+    <method v="2" />
+  </configuration>
+</component>
