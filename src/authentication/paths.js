@@ -25,7 +25,7 @@ function setupAuthentication(password) {
     createIfNotExists(USERS_PATH, 'folder');
     createIfNotExists(GROUPS_PATH, 'folder');
     createIfNotExists(RIGHTS_FILE, 'file', '[]');
-    createIfNotExists(ADMIN_GROUP_FILE, 'file', '{"rights":[]}');
+    createIfNotExists(ADMIN_GROUP_FILE, 'file', '{"rights":["createUser", "deleteUser", "createRight", "deleteRight", "createGroup", "deleteGroup"]}');
 }
 
 function getUserData(user, password) {
