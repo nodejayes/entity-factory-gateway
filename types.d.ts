@@ -6,6 +6,7 @@ export interface IServerOptions {
     keyfile?: string;
     certfile?: string;
     usehttp2?: boolean;
+    adminKey?: string;
 }
 
 export class Server {

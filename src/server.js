@@ -1,4 +1,5 @@
 const {ActionHandler} = require('./handler');
+const {setupAuthentication} = require('./authentication/paths');
 const fastify = require('fastify');
 const helmet = require('fastify-helmet');
 const staticFiles = require('fastify-static');
@@ -40,6 +41,7 @@ function buildActionHandler(folder) {
 }
 
 function initServerInstance(options) {
+    setupAuthentication(options.adminKey);
     buildActionHandler(options.actionHandler);
     const hasCert = fs.existsSync(options.keyfile) && fs.existsSync(options.certfile);
     const http2 = hasCert && options.usehttp2;
@@ -68,10 +70,10 @@ function initServerInstance(options) {
             throw err;
         }
 
-        server.ws.on('connection', socket => {
-            const actionHandler = new ActionHandler(socket, ACTIONS, GUARDS);
+        server.ws.on('connection', (socket, req) => {
+            const actionHandler = new ActionHandler(socket, req, ACTIONS, GUARDS);
             socket.on('close', () => {
-                actionHandler.Destroy();
+                actionHandler.destroy();
             });
         });
     });

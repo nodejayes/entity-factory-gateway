@@ -12,7 +12,8 @@
     "fastify-static": "^2.6.0",
     "fastify-helmet": "^3.0.2",
     "fastify-cors": "^3.0.2",
-    "ts-tooling": "^3.0.1-beta.11"
+    "ts-tooling": "^3.0.1-beta.11",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "entity-factory-connector": "^1.0.0-beta.1",

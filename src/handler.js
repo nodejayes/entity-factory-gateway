@@ -1,10 +1,15 @@
 const {Client} = require('./client');
+const {requestToken} = require('./authentication/request');
 
 class ActionHandler {
-    constructor(socket, actions, guards) {
-        this._client = new Client(socket);
+    constructor(socket, req, actions, guards) {
+        this._client = new Client(socket, req);
         socket.on('message', data => {
             const msg = this._unpackMessage(data);
+            if (msg.type === 'requestToken') {
+                requestToken(this, msg.payload);
+                return;
+            }
             const action = actions[msg.type];
             const guard = guards[msg.type];
             if (!action || typeof action !== typeof function () {}) {

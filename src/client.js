@@ -1,11 +1,19 @@
 const {Guid} = require('ts-tooling/src/types/guid');
+const {verify} = require('./authentication/verify');
 
 class Client {
-    constructor(socket) {
+    constructor(socket, req) {
         this._id = new Guid();
         this._socket = socket;
-        // TODO: add a Method to set the meta Data for each socket from outside
         this._meta = {};
+        const token = req.headers['entity-factory-token'];
+        if (token) {
+            try {
+                this._meta.user = verify(token);
+            } catch (err) {
+                console.warn(`Error on verify token ${token}: ${err.message}`);
+            }
+        }
     }
 
     get id() {
