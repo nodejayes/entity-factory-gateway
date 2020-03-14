@@ -17,30 +17,30 @@ class ActionHandler {
         ActionHandler.clients.Add(this._client);
     }
 
-    get Meta() {
-        return this._client.MetaData;
+    get meta() {
+        return this._client.metaData;
     }
 
-    Destroy() {
+    destroy() {
         ActionHandler.clients.Remove(this._client);
         this._client = null;
     }
 
-    SendCaller(type, payload) {
+    sendCaller(type, payload) {
         const msg = this._packMessage({
             type: type,
             payload: payload,
         });
-        this._client.Send(msg);
+        this._client.send(msg);
     }
 
-    Send(type, payload, filter) {
+    send(type, payload, filter) {
         const pack = this._packMessage({
             type: type,
             payload: payload,
         });
         for (const client of ActionHandler.clients.FindAll(filter)) {
-            client.Send(pack);
+            client.send(pack);
         }
     }
 

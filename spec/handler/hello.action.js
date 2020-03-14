@@ -3,5 +3,5 @@ module.exports._guard = function (context, payload) {
     return true;
 };
 module.exports.hello = function (context, payload) {
-    context.SendCaller('world', `Hello ${payload}`);
+    context.sendCaller('world', `Hello ${payload}`);
 };
