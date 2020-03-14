@@ -16,7 +16,7 @@
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
-    "entity-factory-connector": "^1.0.0-beta.5",
+    "entity-factory-connector": "^1.0.0-beta.10",
     "mocha": "^7.1.0",
     "chai": "^4.2.0",
     "webpack": "^4.42.0",

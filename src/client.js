@@ -17,7 +17,7 @@ class Client {
         }
         if (token) {
             try {
-                this._meta.user = verify(token);
+                this._meta.user = verify(token).data;
                 this.send(JSON.stringify({type:'myRights',payload:this._meta.user.groups}))
             } catch (err) {
                 this.send(JSON.stringify({type:'invalidToken'}));
