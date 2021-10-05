@@ -9,7 +9,7 @@
   "dependencies": {
     "fastify": "^2.12.1",
     "fastify-ws": "^1.0.3",
-    "fastify-static": "^2.6.0",
+    "fastify-static": "^4.2.4",
     "fastify-helmet": "^3.0.2",
     "fastify-cors": "^3.0.2",
     "ts-tooling": "^3.0.1-beta.11",
